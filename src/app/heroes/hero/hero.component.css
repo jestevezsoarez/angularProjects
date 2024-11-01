@@ -1,0 +1,12 @@
+h1 {
+    font-size: 50px;
+}
+
+button.btn-danger {
+    margin-left: 10px;
+}
+
+dd {
+    font-size: 2rem;
+    font-weight: bold;
+}

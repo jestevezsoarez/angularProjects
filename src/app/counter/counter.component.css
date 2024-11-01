@@ -1,0 +1,29 @@
+.btn {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.primary {
+  background-color: #007bff;
+}
+.primary:hover {
+  background: #0b7dda;
+}
+
+.success {
+  background-color: #04aa6d;
+}
+.success:hover {
+  background-color: #46a049;
+}
+
+.warning {
+  background-color: #ff9800;
+}
+.warning:hover {
+  background: #e68a00;
+}

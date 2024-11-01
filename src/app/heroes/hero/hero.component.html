@@ -1,0 +1,19 @@
+<h1>{{ name | uppercase }}</h1>
+<hr />
+<dl>
+  <dt>Nombre:</dt>
+  <dd>{{ name | titlecase }}</dd>
+
+  <dt>Edad:</dt>
+  <dd>{{ age }}</dd>
+
+  <dt>Metodo:</dt>
+  <dd>{{ getHeroDescription() }}</dd>
+
+  <dt>Capitalizado:</dt>
+  <dd>{{ capitalizedName }}</dd>
+</dl>
+
+<button class="btn btn-primary" (click)="changeHero()">Cambiar nombre</button>
+
+<button class="btn btn-danger" (click)="changeAge()">Cambiar edad</button>
