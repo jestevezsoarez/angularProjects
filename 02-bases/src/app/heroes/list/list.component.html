@@ -1,1 +1,19 @@
-<p>list works!</p>
+<h3>Listado de Heroes</h3>
+
+<h3 *ngIf="deletedHero; else nothingWasDeleted">
+  Heroe borrado <small class="text-danger">{{ deletedHero }}</small>
+</h3>
+
+<!-- El ng-template es como tener un div que no existe, lleva una condicion de cuando mostrarse 
+ Antes habia puesto 2 ng-If pero es un error porque tiene que evaluar 2 condiciones -->
+<ng-template #nothingWasDeleted>
+    <h3>No ha borrado nada.</h3>    
+</ng-template>
+
+<button class="btn btn-outline-danger" (click)="deleteLastHero()" *ngIf="heroNames.length > 0">
+  Borrar ultimo heroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">{{ name }}</li>
+</ul>
