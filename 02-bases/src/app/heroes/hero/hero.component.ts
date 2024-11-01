@@ -19,11 +19,16 @@ export class HeroComponent {
 
   // Cambia el nombre del heroe a Spiderman
   changeHero(): void {
-    this.name = 'Spiderman';
+    this.name = 'spiderman';
   }
 
   // Cambia la edad a 25
   changeAge(): void {
     this.age = 25;
+  }
+
+  reset(): void {
+    this.name = 'ironman';
+    this.age = 45;
   }
 }
