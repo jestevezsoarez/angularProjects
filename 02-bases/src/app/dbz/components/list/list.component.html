@@ -3,6 +3,7 @@
   <li
     *ngFor="let character of characters; let i = index; first as isFirst; last as isLast; even as isEven;"
     class="list-group-item"
+    [ngClass]="{'list-group-item-success': isFirst, 'list-group-item-danger': isLast}"
   >
     <span class="text-primary"> {{ i + 1 }}. </span>
     <span>{{ character.name }} - </span>
