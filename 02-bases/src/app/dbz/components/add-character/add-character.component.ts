@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'dbz-add-character',
@@ -7,5 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class AddCharacterComponent {
 
-  @Input() concierto?: string;
+  public character: Character = {
+    name: 'asdfdf',
+    power: 200
+  };
+
+  emitCharacter(): void {
+    console.log(this.character);
+  }
 }
