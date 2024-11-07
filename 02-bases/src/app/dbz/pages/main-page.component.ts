@@ -20,4 +20,11 @@ export class MainPageComponent {
       power: 7500,
     },
   ];
+
+  public onNewCharacter(character: Character): void {
+    console.log(character);
+    // Si el nombre viene vacio no hago nada
+    if (character.name.length === 0) return;
+    this.characters.push(character);
+  }
 }
