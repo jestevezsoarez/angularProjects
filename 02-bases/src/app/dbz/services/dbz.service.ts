@@ -26,7 +26,7 @@ export class DbzService {
     },
   ];
 
-  public onNewCharacter(character: Character): void {
+  public addCharacter(character: Character): void {
     
     // Si el nombre viene vacio no hago nada
     if (character.name.length === 0) return;
