@@ -10,8 +10,11 @@ export class ListComponent {
   @Input() characters: Character[] = [];
   @Output() deleteCharacter: EventEmitter<string> = new EventEmitter();
 
-  onDeleteCharacter(id: string): void {
+  onDeleteCharacter(id?: string): void {
     console.log(id);
+    // Si el id no existe nunca llama al deleteCharacter
+    if (!id) return;
+    
     this.deleteCharacter.emit(id);
   }
 }
