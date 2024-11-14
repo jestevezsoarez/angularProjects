@@ -1,10 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 
 @Injectable({
   providedIn: 'root', // root para que sea global el servicio
 })
 export class GifsService {
+  public gifList: Gif[] = [];
+
   private _tagsHistory: string[] = [];
   private apiKey: string = 'uwiy2NxdVdsk3m5DGWgvUCIXNKxVCBf3';
   private serviceUrl = 'https://api.giphy.com/v1/stickers';
@@ -33,14 +36,12 @@ export class GifsService {
     const params = new HttpParams()
       .set('api_key', this.apiKey)
       .set('limit', '10')
-      .set('q', tag)
+      .set('q', tag);
 
-    this.http
-      .get(
-        `${this.serviceUrl}/search`, {params: params}
-      )
+    this.http.get<SearchResponse>(`${this.serviceUrl}/search`, { params: params })
       .subscribe((resp) => {
-        console.log(resp);
+        this.gifList = resp.data;
+        console.log(this.gifList);
       });
   }
 }
