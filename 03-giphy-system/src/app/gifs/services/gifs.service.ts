@@ -1,3 +1,4 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,8 +7,9 @@ import { Injectable } from '@angular/core';
 export class GifsService {
   private _tagsHistory: string[] = [];
   private apiKey: string = 'uwiy2NxdVdsk3m5DGWgvUCIXNKxVCBf3';
+  private serviceUrl = 'https://api.giphy.com/v1/stickers';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   get tagsHistory() {
     return [...this._tagsHistory]; // como los arreglos pasan por referencia en js retorno una copia con el operador spread
@@ -23,13 +25,22 @@ export class GifsService {
     }
   }
 
-  // esta es una forma de hacer peticiones http con fetch
   async searchTag(tag: string): Promise<void> {
     if (tag.length === 0) return;
     this.organizeHistory(tag);
-    // el fetch regresa una promesa
-    fetch('https://api.giphy.com/v1/stickers/search?api_key=uwiy2NxdVdsk3m5DGWgvUCIXNKxVCBf3&q=superman&limit=20')
-      .then(resp => resp.json()) 
-      .then (data => console.log(data));
+
+    // Los query params se pueden agregar a un objeto HttpParams
+    const params = new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('limit', '10')
+      .set('q', tag)
+
+    this.http
+      .get(
+        `${this.serviceUrl}/search`, {params: params}
+      )
+      .subscribe((resp) => {
+        console.log(resp);
+      });
   }
 }
