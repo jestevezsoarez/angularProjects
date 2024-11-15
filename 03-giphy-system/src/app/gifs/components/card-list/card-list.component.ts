@@ -9,5 +9,6 @@ import { Gif } from '../../interfaces/gifs.interfaces';
 export class CardListComponent {
 
     @Input() stickers: Gif[] = [];
+
     constructor() { }
 }
