@@ -2,7 +2,7 @@
     <div class="col-md-3 col-sm-6" *ngFor="let sticker of stickers">
         <div class="card mb-2 text-center bg-dark">
             <!-- TODO: Crear imagen -->
-            <img [src]="sticker.images.downsized.url" [alt]="sticker.title">
+            <img [src]="sticker.images.downsized.url" [alt]="sticker.title" class="card-img-top">
             <div class="card-body text-white">
                 <p class="card-text">
                     {{sticker.title}}

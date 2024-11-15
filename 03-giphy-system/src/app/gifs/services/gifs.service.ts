@@ -23,9 +23,9 @@ export class GifsService {
 
     if (this._tagsHistory.includes(tag)) {
       this._tagsHistory = this._tagsHistory.filter((oldTag) => oldTag !== tag);
-      this._tagsHistory.unshift(tag); // unsift agrega al inicio del array
       this._tagsHistory = this._tagsHistory.splice(0, 9);
     }
+    this._tagsHistory.unshift(tag); // unsift agrega al inicio del array
   }
 
   async searchTag(tag: string): Promise<void> {
@@ -41,7 +41,8 @@ export class GifsService {
     this.http.get<SearchResponse>(`${this.serviceUrl}/search`, { params: params })
       .subscribe((resp) => {
         this.gifList = resp.data;
-        console.log(this.gifList);
       });
   }
+
+  private saveLocalStorage
 }
