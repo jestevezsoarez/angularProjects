@@ -12,7 +12,12 @@ export class GifsService {
   private apiKey: string = 'uwiy2NxdVdsk3m5DGWgvUCIXNKxVCBf3';
   private serviceUrl = 'https://api.giphy.com/v1/stickers';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadLocalStorage();
+
+    if (this._tagsHistory.length === 0) return; // clean code
+    this.searchTag(this._tagsHistory[0]);
+  }
 
   get tagsHistory() {
     return [...this._tagsHistory]; // como los arreglos pasan por referencia en js retorno una copia con el operador spread
@@ -47,5 +52,11 @@ export class GifsService {
 
   private saveLocalStorage(): void {
     localStorage.setItem('history', JSON.stringify(this._tagsHistory));
+  }
+
+  private loadLocalStorage(): void {
+    if (!localStorage.getItem('history')) return; // Si no hay historial porque es la primer vez que abro la app no hago nada
+
+     this._tagsHistory = JSON.parse(localStorage.getItem('history')!);    
   }
 }
