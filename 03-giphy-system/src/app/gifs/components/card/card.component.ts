@@ -10,6 +10,6 @@ export class CardComponent implements OnInit {
   @Input() gif!: Gif;
 
   ngOnInit(): void {
-    if (!this.gif) throw new Error('Gif property is required'); // Validacion. gif es una propiedad requerida.
+    if (!this.gif) throw new Error('Gif property is required'); // Validacion. gif es una propiedad requerida.    
   }
 }
