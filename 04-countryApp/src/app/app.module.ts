@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
-
+import { SharedModule } from './shared/shared.module';
+// Components
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -8,7 +10,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    SharedModule // El modulo Shared se carga de forma tradicional, el modulo Country se cargara de forma perezoza.
   ],
   providers: [],
   bootstrap: [AppComponent]
