@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ByCapitalComponent {
 
+  public placeholder: string = 'My placeholder by capital';
 }
