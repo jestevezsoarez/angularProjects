@@ -1,17 +1,20 @@
 <h2>By Capital</h2>
-<hr>
+<hr />
 
 <div class="row">
-    <div class="col">
-        <!-- SearchBox -->
-        <shared-search [placeholder]="placeholder"></shared-search>
-    </div>
+  <div class="col">
+    <!-- SearchBox -->
+    <shared-search
+      (onValue)="searchByCapital($event)"
+      [placeholder]="placeholder"
+    ></shared-search>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col">
-        <hr>
-        <!-- Results -->
-         Results
-    </div>
+  <div class="col">
+    <hr />
+    <!-- Results -->
+    Results
+  </div>
 </div>

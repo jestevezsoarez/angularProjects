@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 export class ByCapitalComponent {
 
   public placeholder: string = 'My placeholder by capital';
+
+  searchByCapital(term: string): void {
+    console.log(term);
+    
+  }
 }

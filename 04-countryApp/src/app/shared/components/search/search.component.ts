@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'shared-search',
@@ -8,5 +8,13 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchComponent {
 
-  @Input() placeholder: string = '';
+  @Input()
+  public placeholder: string = '';
+  
+  @Output()
+  public onValue = new EventEmitter<string>()
+
+  searchValue(value: string): void {
+    this.onValue.emit(value);
+  }
 }
