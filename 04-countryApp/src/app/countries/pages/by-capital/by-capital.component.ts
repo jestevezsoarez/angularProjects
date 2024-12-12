@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CountryService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-by-capital',
@@ -8,10 +10,15 @@ import { Component } from '@angular/core';
 })
 export class ByCapitalComponent {
 
-  public placeholder: string = 'My placeholder by capital';
+  public placeholder: string = 'Enter capital name...';
+  public countries: Country[] = [];
+
+  constructor(private countriesService: CountryService) {}
 
   searchByCapital(term: string): void {
-    console.log(term);
-    
+    this.countriesService.searchByCapital(term)
+      .subscribe(countries => {
+        this.countries = countries;
+      })  
   }
 }
