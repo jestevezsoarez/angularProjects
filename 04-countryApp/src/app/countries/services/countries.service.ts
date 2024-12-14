@@ -12,12 +12,31 @@ export class CountryService {
 
   constructor(private http: HttpClient) {}
 
+  // https://restcountries.com/v3.1/capital/{capital}
   searchByCapital(term: string): Observable<Country[]> {
     const url = `${this.apiUrl}/capital/${term}`;
     return this.http.get<Country[]>(url)
       .pipe(
         // Catch error and return error as an empty array with of operator
         catchError( error => of([]))
+      );
+  }
+
+  // https://restcountries.com/v3.1/region/{region}
+  searchByRegion(term: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/region/${term}`;
+    return this.http.get<Country[]>(url)
+      .pipe(
+        catchError(error => of([]))
+      );
+  }
+
+  // https://restcountries.com/v3.1/name/{name}
+  searchByCountryName(term: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/name/${term}`;
+    return this.http.get<Country[]>(url)
+      .pipe(
+        catchError(error => of([]))
       );
   }
 
