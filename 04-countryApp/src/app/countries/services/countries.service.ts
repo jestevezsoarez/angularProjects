@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, delay, map, Observable, of } from 'rxjs';
 import { Country } from '../interfaces/country';
 
 @Injectable({ providedIn: 'root' })
@@ -18,6 +18,7 @@ export class CountryService {
       .pipe(
         // Catch error and return error as an empty array with of operator
         catchError( () => of([])),
+        delay(2000),
       );
   }
 
