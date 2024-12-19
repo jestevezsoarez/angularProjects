@@ -18,7 +18,6 @@ export class CountryService {
       .pipe(
         // Catch error and return error as an empty array with of operator
         catchError( () => of([])),
-        delay(2000),
       );
   }
 
