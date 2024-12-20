@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
 
 @Component({
@@ -7,8 +7,8 @@ import { debounceTime, Subject } from 'rxjs';
   styles: [
   ]
 })
-export class SearchComponent implements OnInit{
-
+export class SearchComponent implements OnInit, OnDestroy{
+  
   
   private debouncer: Subject<string> = new Subject<string>();
   
@@ -30,12 +30,16 @@ export class SearchComponent implements OnInit{
       this.onDebounce.emit(value);
     })
   }
-
+  
   searchValue(value: string): void {
     this.onValue.emit(value);
   }
-
+  
   onKeyPress(searchTerm: string) {
-     this.debouncer.next(searchTerm);
+    this.debouncer.next(searchTerm);
+  }
+
+  ngOnDestroy(): void {
+    this.debouncer.unsubscribe();
   }
 }
