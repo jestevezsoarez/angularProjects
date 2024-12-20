@@ -16,9 +16,6 @@ export class SearchComponent implements OnInit, OnDestroy{
   public placeholder: string = '';
   
   @Output()
-  public onValue = new EventEmitter<string>();
-  
-  @Output()
   public onDebounce = new EventEmitter<string>();
   
   ngOnInit(): void {
@@ -29,10 +26,6 @@ export class SearchComponent implements OnInit, OnDestroy{
     .subscribe( value => {
       this.onDebounce.emit(value);
     })
-  }
-  
-  searchValue(value: string): void {
-    this.onValue.emit(value);
   }
   
   onKeyPress(searchTerm: string) {
