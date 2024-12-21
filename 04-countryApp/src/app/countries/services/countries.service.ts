@@ -10,6 +10,12 @@ export class CountryService {
 
   private apiUrl: string = 'https://restcountries.com/v3.1';
 
+  public cacheStore = {
+    byCapital: {term: '', countries: []},
+    byCountry: {term: '', countries: []},
+    byRegion : {term: '', countries: []}
+  };
+
   constructor(private http: HttpClient) {}
 
   // Private method to refactor repeated code in fetch methods
