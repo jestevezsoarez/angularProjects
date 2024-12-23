@@ -19,6 +19,7 @@ export class ByRegionComponent implements OnInit {
 
   ngOnInit(): void {
     this.countries = this.countriesService.cacheStore.byRegion.countries;
+    this.selectedRegion = this.countriesService.cacheStore.byRegion.region;
   }
 
   searchByRegion(name: Region): void {
