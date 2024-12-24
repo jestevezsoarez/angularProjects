@@ -18,7 +18,9 @@ export class CountryService {
     byRegion : {countries: []}
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadLocalStorage();
+  }
 
   // Private method to refactor repeated code in fetch methods
   private getCountriesRequest(url: string): Observable<Country[]> {
@@ -44,7 +46,8 @@ export class CountryService {
     const url = `${this.apiUrl}/capital/${term}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byCapital = {term: term, countries: countries}) // tap trigger secondary effect
+        tap(countries => this.cacheStore.byCapital = {term: term, countries: countries}), // tap trigger secondary effect
+        tap( () => this.saveLocalStorage())
       );
   }
 
@@ -53,7 +56,8 @@ export class CountryService {
     const url = `${this.apiUrl}/region/${term}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byRegion = {region: term, countries: countries})
+        tap(countries => this.cacheStore.byRegion = {region: term, countries: countries}),
+        tap(() => this.saveLocalStorage())
       )
   }
 
@@ -62,8 +66,18 @@ export class CountryService {
     const url = `${this.apiUrl}/name/${term}`;
     return this.getCountriesRequest(url)
       .pipe(
-        tap(countries => this.cacheStore.byCountry = {term: term, countries: countries})
+        tap(countries => this.cacheStore.byCountry = {term: term, countries: countries}),
+        tap(() => this.saveLocalStorage())
       );
+  }
+
+  private saveLocalStorage() {
+    localStorage.setItem('store', JSON.stringify(this.cacheStore));
+  }
+
+  private loadLocalStorage() {
+    if(!localStorage.getItem('store')) return;
+    this.cacheStore = JSON.parse(localStorage.getItem('store')!);
   }
 
 }
