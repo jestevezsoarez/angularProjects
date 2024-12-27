@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-// PrimeNg
-import { ButtonModule } from 'primeng/button';
+// Modules
+import { SharedModule } from './shared/shared.module';
+import { PrimeNgModule } from './prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { ButtonModule } from 'primeng/button';
   ],
   imports: [
     BrowserModule,
-    ButtonModule
+    SharedModule,
+    PrimeNgModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
