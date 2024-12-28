@@ -13,12 +13,22 @@ export class MenuComponent {
   ngOnInit() {
       this.menuItems = [
           {
-              label: 'New',
-              icon: 'pi pi-fw pi-plus',
-          },
-          {
-              label: 'Delete',
-              icon: 'pi pi-fw pi-trash'
+              label: 'Angular Pipes',
+              icon: 'pi pi-desktop',
+              items: [
+                {
+                  label: 'Dates and Texts',
+                  icon: 'pi pi-dollar'
+                },
+                {
+                  label: 'Numbers',
+                  icon: 'pi pi-dollar'
+                },
+                {
+                  label: 'Rare',
+                  icon: 'pi pi-globe'
+                }
+              ]
           }
       ];
   }
