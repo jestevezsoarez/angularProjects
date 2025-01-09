@@ -13,4 +13,5 @@ export class BasicPageComponent {
   public fullName: string = 'jAvIEr eSTevEZ';
   public price: number = 12345.6789;
 
+  public customDate: Date = new Date();
 }

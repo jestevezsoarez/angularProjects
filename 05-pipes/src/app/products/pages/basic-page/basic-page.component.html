@@ -22,8 +22,26 @@
     </div>
 
     <div class="col-12 md:col-6 lg:col-3">
-        <p-card header="titlecase">
+        <p-card header="Currency">
             {{ price | currency }}
+        </p-card>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-3">
+        <p-card header="Currency">
+            <ul>
+                <li>Fecha</li>
+                <li>Fecha | date</li>
+            </ul>
+        </p-card>
+    </div>
+    
+    <div class="col-12 md:col-6 lg:col-3">
+        <p-card header="Currency">
+            <ul>
+                <li>{{ customDate }}</li>
+                <li>{{ customDate | date }}</li>
+            </ul>
         </p-card>
     </div>
 </div>
