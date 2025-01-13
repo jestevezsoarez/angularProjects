@@ -8,6 +8,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from 'src/app-routing.module';
 
+// Locale Configuration
+import LocaleUY from '@angular/common/locales/es-UY';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(LocaleUY);
+// End Locale Configuration
+
+
 @NgModule({
   declarations: [
     AppComponent
