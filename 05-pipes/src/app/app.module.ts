@@ -9,10 +9,13 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from 'src/app-routing.module';
 
 // Locale Configuration
-import LocaleUY from '@angular/common/locales/es-UY';
+import LocaleEsUY from '@angular/common/locales/es-UY'; // Spanish Uruguay
+import LocaleFrCa from '@angular/common/locales/fr-CA';
+
 import { registerLocaleData } from '@angular/common';
 
-registerLocaleData(LocaleUY);
+registerLocaleData(LocaleEsUY);
+registerLocaleData(LocaleFrCa);
 // End Locale Configuration
 
 
